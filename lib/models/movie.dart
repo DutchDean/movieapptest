@@ -1,37 +1,43 @@
 class Movie {
+  final String id;
   final String title;
   final String director;
   final String? description;
-  final DateTime? releasedate;
+  final DateTime? releaseDate;
   final int score;
+  final String? imagePath;
 
   Movie({
+    required this.id,
     required this.title,
     required this.director,
     this.description,
-    required this.releasedate,
-    required this.score, required id, DateTime? releaseDate,
+    required this.releaseDate,
+    required this.score,
+    this.imagePath,
   });
-
-  get id => null;
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'title': title,
       'director': director,
       'description': description,
-      'release date': releasedate?.toIso8601String(),
+      'releaseDate': releaseDate?.toIso8601String(),
       'score': score,
+      'imagePath': imagePath,
     };
   }
 
   factory Movie.fromMap(Map<String, dynamic> map) {
     return Movie(
-      title: map['title'],
-      director: map['director'],
+      id: map['id'] ?? '',
+      title: map['title'] ?? '',
+      director: map['director'] ?? '',
       description: map['description'],
-      releasedate: map['release date'] != null ? DateTime.parse(map['release date']) : null,
-      score: map['score'] ?? 5, id: null,
+      releaseDate: map['releaseDate'] != null ? DateTime.parse(map['releaseDate']) : null,
+      score: map['score'] ?? 5,
+      imagePath: map['imagePath'],
     );
   }
 }

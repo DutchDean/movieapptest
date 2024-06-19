@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:movieapptest/providers/movie_provider.dart';
 import 'package:movieapptest/models/movie.dart';
 import 'package:movieapptest/screens/movie_edit_screen.dart';
+import 'dart:io';
 
 class MovieDetailScreen extends StatelessWidget {
   final Movie movie;
@@ -40,13 +41,23 @@ class MovieDetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            if (movie.imagePath != null && movie.imagePath!.isNotEmpty)
+              Center(
+                child: Image.file(
+                  File(movie.imagePath!),
+                  fit: BoxFit.contain,
+                  height: 300,
+                  width: double.infinity,
+                ),
+              ),
+            const SizedBox(height: 20),
             Text('Director: ${movie.director}', style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 10),
             if (movie.description != null) Text(movie.description!),
             const SizedBox(height: 10),
             Text('Score: ${movie.score}', style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 20),
-            Text('Release Date: ${movie.releasedate?.year}-${movie.releasedate?.month}-${movie.releasedate?.day}',style: const TextStyle(fontSize: 18),)
+            Text('Release Date: ${movie.releaseDate?.year}-${movie.releaseDate?.month}-${movie.releaseDate?.day}',style: const TextStyle(fontSize: 18),)
             // Add other movie details here
           ],
         ),

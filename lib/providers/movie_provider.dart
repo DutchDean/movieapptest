@@ -43,6 +43,7 @@ class MovieProvider with ChangeNotifier {
     final index = _movies.indexWhere((movie) => movie.id == updatedMovie.id);
     if (index != -1) {
       _movies[index] = updatedMovie;
+      saveMovies();
       notifyListeners();
     }
   }
