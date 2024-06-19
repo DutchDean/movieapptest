@@ -147,7 +147,7 @@ class _MovieEditScreenState extends State<MovieEditScreen> {
                         memeImage: _memeImageFile?.path,
                       );
                       Provider.of<MovieProvider>(context, listen: false).updateMovie(updatedMovie);
-                      Navigator.pop(context);
+                      Navigator.popUntil(context, ModalRoute.withName('/'));
                     } catch (error) {
                       // Error
                     }
