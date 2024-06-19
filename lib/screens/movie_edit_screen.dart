@@ -137,7 +137,7 @@ class _MovieEditScreenState extends State<MovieEditScreen> {
                           imagePath: _imageFile?.path,
                         );
                         Provider.of<MovieProvider>(context, listen: false).updateMovie(updatedMovie);
-                        Navigator.pop(context);
+                        Navigator.popUntil(context, ModalRoute.withName('/'));
                       } catch (error) {
                         // Handle error
                       }
