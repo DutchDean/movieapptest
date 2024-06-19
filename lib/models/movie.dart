@@ -1,23 +1,28 @@
-// lib/models/movie.dart
-
 class Movie {
   final String title;
   final String director;
   final String? description;
-  final int score; // Ensure score is always an int
+  final DateTime? releasedate; // Change to DateTime?
+
+  // Ensure score is always an int
+  final int score;
 
   Movie({
     required this.title,
     required this.director,
     this.description,
-    required this.score,
+    required this.releasedate,
+    required this.score, required id, DateTime? releaseDate,
   });
+
+  get id => null;
 
   Map<String, dynamic> toMap() {
     return {
       'title': title,
       'director': director,
       'description': description,
+      'release date': releasedate?.toIso8601String(), // Convert DateTime? to string
       'score': score,
     };
   }
@@ -27,7 +32,8 @@ class Movie {
       title: map['title'],
       director: map['director'],
       description: map['description'],
-      score: map['score'] ?? 5, // Provide a default score if not present
+      releasedate: map['release date'] != null ? DateTime.parse(map['release date']) : null,
+      score: map['score'] ?? 5, id: null, // Provide a default score if not present
     );
   }
 }

@@ -40,4 +40,12 @@ class MovieProvider with ChangeNotifier {
       notifyListeners();
     }
   }
+
+  void updateMovie(Movie updatedMovie) {
+    final index = _movies.indexWhere((movie) => movie.id == updatedMovie.id);
+    if (index != -1) {
+      _movies[index] = updatedMovie;
+      notifyListeners();
+    }
+  }
 }

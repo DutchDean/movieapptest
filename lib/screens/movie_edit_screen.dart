@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; // Import for date formatting
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../providers/movie_provider.dart';
 import '../models/movie.dart';
 
-class MovieAddScreen extends StatefulWidget {
-  const MovieAddScreen({Key? key}) : super(key: key);
+class MovieEditScreen extends StatefulWidget {
+  final Movie movie;
+
+  const MovieEditScreen({super.key, required this.movie});
 
   @override
-  _MovieAddScreenState createState() => _MovieAddScreenState();
+  _MovieEditScreenState createState() => _MovieEditScreenState();
 }
 
-class _MovieAddScreenState extends State<MovieAddScreen> {
+class _MovieEditScreenState extends State<MovieEditScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _directorController = TextEditingController();
@@ -20,10 +22,20 @@ class _MovieAddScreenState extends State<MovieAddScreen> {
   DateTime? _selectedDate;
 
   @override
+  void initState() {
+    super.initState();
+    _titleController.text = widget.movie.title;
+    _directorController.text = widget.movie.director;
+    _descriptionController.text = widget.movie.description ?? '';
+    _scoreController.text = widget.movie.score.toString();
+    _selectedDate = widget.movie.releasedate;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Movie'),
+        title: const Text('Edit Movie'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -90,21 +102,22 @@ class _MovieAddScreenState extends State<MovieAddScreen> {
                 onPressed: () {
                   if (_formKey.currentState?.validate() ?? false) {
                     try {
-                      final movie = Movie(
+                      final updatedMovie = Movie(
+                        id: widget.movie.id, // Maintain the same ID
                         title: _titleController.text,
                         director: _directorController.text,
                         description: _descriptionController.text.isNotEmpty ? _descriptionController.text : null,
-                        releasedate: _selectedDate,
-                        score: int.parse(_scoreController.text), id: null,
+                        releaseDate: _selectedDate,
+                        score: int.parse(_scoreController.text), releasedate: null,
                       );
-                      Provider.of<MovieProvider>(context, listen: false).addMovie(movie);
+                      Provider.of<MovieProvider>(context, listen: false).updateMovie(updatedMovie);
                       Navigator.pop(context);
                     } catch (error) {
                       // Handle error: Show a snackbar or dialog to the user
                     }
                   }
                 },
-                child: const Text('Add Movie'),
+                child: const Text('Save Changes'),
               ),
             ],
           ),
