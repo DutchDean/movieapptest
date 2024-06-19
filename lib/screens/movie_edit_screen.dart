@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import '../providers/movie_provider.dart';
-import '../models/movie.dart';
+import 'package:movieapptest/providers/movie_provider.dart';
+import 'package:movieapptest/models/movie.dart';
 
 class MovieEditScreen extends StatefulWidget {
   final Movie movie;
@@ -103,7 +103,7 @@ class _MovieEditScreenState extends State<MovieEditScreen> {
                   if (_formKey.currentState?.validate() ?? false) {
                     try {
                       final updatedMovie = Movie(
-                        id: widget.movie.id, // Maintain the same ID
+                        id: widget.movie.id,
                         title: _titleController.text,
                         director: _directorController.text,
                         description: _descriptionController.text.isNotEmpty ? _descriptionController.text : null,
@@ -113,7 +113,7 @@ class _MovieEditScreenState extends State<MovieEditScreen> {
                       Provider.of<MovieProvider>(context, listen: false).updateMovie(updatedMovie);
                       Navigator.pop(context);
                     } catch (error) {
-                      // Handle error: Show a snackbar or dialog to the user
+                      // Error
                     }
                   }
                 },

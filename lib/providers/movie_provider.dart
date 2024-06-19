@@ -1,9 +1,7 @@
-// lib/providers/movie_provider.dart
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
-import '../models/movie.dart';
+import 'package:movieapptest/models/movie.dart';
 
 class MovieProvider with ChangeNotifier {
   List<Movie> _movies = [];

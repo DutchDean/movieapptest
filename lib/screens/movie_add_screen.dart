@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; // Import for date formatting
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import '../providers/movie_provider.dart';
-import '../models/movie.dart';
+import 'package:movieapptest/providers/movie_provider.dart';
+import 'package:movieapptest/models/movie.dart';
 
 class MovieAddScreen extends StatefulWidget {
   const MovieAddScreen({Key? key}) : super(key: key);
@@ -100,7 +100,7 @@ class _MovieAddScreenState extends State<MovieAddScreen> {
                       Provider.of<MovieProvider>(context, listen: false).addMovie(movie);
                       Navigator.pop(context);
                     } catch (error) {
-                      // Handle error: Show a snackbar or dialog to the user
+                      // Error
                     }
                   }
                 },

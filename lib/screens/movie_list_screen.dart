@@ -1,10 +1,8 @@
-// lib/screens/movie_list_screen.dart
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/movie_provider.dart';
-import 'movie_detail_screen.dart';
-import 'movie_add_screen.dart';
+import 'package:movieapptest/providers/movie_provider.dart';
+import 'package:movieapptest/screens/movie_detail_screen.dart';
+import 'package:movieapptest/screens/movie_add_screen.dart';
 
 class MovieListScreen extends StatelessWidget {
   const MovieListScreen({super.key});
@@ -32,7 +30,7 @@ class MovieListScreen extends StatelessWidget {
                 },
                 child: ListTile(
                   title: Text(movie.title),
-                  subtitle: Text('${movie.director} - Score: ${movie.score}'), // Display score
+                  subtitle: Text('${movie.director} - Score: ${movie.score}'),
                   onTap: () {
                     Navigator.push(
                       context,

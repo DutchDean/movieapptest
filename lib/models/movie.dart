@@ -2,9 +2,7 @@ class Movie {
   final String title;
   final String director;
   final String? description;
-  final DateTime? releasedate; // Change to DateTime?
-
-  // Ensure score is always an int
+  final DateTime? releasedate;
   final int score;
 
   Movie({
@@ -22,7 +20,7 @@ class Movie {
       'title': title,
       'director': director,
       'description': description,
-      'release date': releasedate?.toIso8601String(), // Convert DateTime? to string
+      'release date': releasedate?.toIso8601String(),
       'score': score,
     };
   }
@@ -33,7 +31,7 @@ class Movie {
       director: map['director'],
       description: map['description'],
       releasedate: map['release date'] != null ? DateTime.parse(map['release date']) : null,
-      score: map['score'] ?? 5, id: null, // Provide a default score if not present
+      score: map['score'] ?? 5, id: null,
     );
   }
 }

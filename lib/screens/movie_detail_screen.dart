@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../models/movie.dart';
-import '../providers/movie_provider.dart';
-import 'movie_edit_screen.dart'; // Import the MovieEditScreen
+import 'package:movieapptest/providers/movie_provider.dart';
+import 'package:movieapptest/models/movie.dart';
+import 'package:movieapptest/screens/movie_edit_screen.dart';
 
 class MovieDetailScreen extends StatelessWidget {
   final Movie movie;
