@@ -19,9 +19,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => MovieProvider()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Movie Review App',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.cyan,
         ),
         home: const MovieListScreen(),
       ),
