@@ -52,12 +52,10 @@ class MovieDetailScreen extends StatelessWidget {
               ),
             const SizedBox(height: 20),
             Text('Director: ${movie.director}', style: const TextStyle(fontSize: 18)),
-            const SizedBox(height: 10),
+            Text('My Score: ${movie.score}', style: const TextStyle(fontSize: 18)),
+            Text('Release Date: ${movie.releaseDate?.year}-${movie.releaseDate?.month}-${movie.releaseDate?.day}\n',style: const TextStyle(fontSize: 18),),
+            const Text("Other people's scores:"),  
             if (movie.description != null) Text(movie.description!),
-            const SizedBox(height: 10),
-            Text('Score: ${movie.score}', style: const TextStyle(fontSize: 18)),
-            const SizedBox(height: 20),
-            Text('Release Date: ${movie.releaseDate?.year}-${movie.releaseDate?.month}-${movie.releaseDate?.day}',style: const TextStyle(fontSize: 18),)
             // Add other movie details here
           ],
         ),
